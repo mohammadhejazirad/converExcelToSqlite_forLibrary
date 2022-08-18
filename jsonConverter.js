@@ -30,7 +30,7 @@ const JsonConverter = (data) => {
   });
 
   // create json file
-  const path_file_save = "./assets";
+  const path_file_save = "./database";
   const name_file_save = "database.json";
   const file = fs.createWriteStream(`${path_file_save}/${name_file_save}`);
 

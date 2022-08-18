@@ -24,18 +24,9 @@ const dataToDatabase = async (params, consoleLog, removeOldFile) => {
   params = findRepeatName(params);
 
   params.forEach(async (item) => {
-    const name = item.name;
-    let gender;
-    let rate;
-    if (item.man) gender = 1;
-    if (item.woman) gender = 2;
-    if (item.man && item.woman) gender = 3;
-    if (item.rate.includes("پرکاربرد")) rate = 1;
-    if (item.rate.includes("معمولی")) rate = 2;
-    if (item.rate.includes("بسیار نادر")) rate = 3;
     await db
       .prepare("INSERT INTO names (name, gender, rate) VALUES (?,?,?)")
-      .run(name, gender, rate);
+      .run(item.name, item.gender, item.rate);
   });
 };
 
