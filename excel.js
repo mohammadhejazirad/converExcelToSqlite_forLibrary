@@ -1,5 +1,6 @@
 const excelToJson = require("convert-excel-to-json");
 const fs = require("fs");
+const sortArray = require("sort-array");
 
 const convertExcelToJson = async (
   pathFile,
@@ -26,7 +27,10 @@ const convertExcelToJson = async (
     ],
   });
 
-  return workbook[options.sheet];
+  const result = workbook[options.sheet];
+  return sortArray(result, {
+    by: "A",
+  });
 };
 
 module.exports = {
